@@ -84,7 +84,10 @@
     <h2>Login To Alzayani HR Chatbot</h2>
     <form onsubmit="return login(event)">
       <input type="text" id="username" placeholder="Username" autocomplete="off" required>
-      <input type="password" id="password" placeholder="Password" autocomplete="off" required>
+      <div style="position: relative; width: 100%;">
+        <input type="password" id="password" placeholder="Password" autocomplete="off" required style="padding-right: 40px;">
+        <span id="togglePassword" style="position: absolute; top: 35%; right: 12px; transform: translateY(-50%); cursor: pointer; color: #555;">👁️</span>
+      </div>
       <button type="submit">Login</button>
       <p id="error-msg"></p>
     </form>
@@ -125,6 +128,16 @@ const _0x526ad2=_0x4a30;(function(_0x33c1d5,_0x25c11e){const _0x4194ab=_0x4a30,_
     }
   }
 </script>
+
+<script>
+  document.getElementById("togglePassword").addEventListener("click", function () {
+    const passwordInput = document.getElementById("password");
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+    this.textContent = type === "password" ? "👁️" : "🙈"; // Toggle icons
+  });
+</script>
+
 
 </body>
 </html>
