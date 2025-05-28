@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - AI Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f3f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+.login-box {
+  background: #06276f;
+  padding: 50px; /* Slightly more padding */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Increase width */
+  max-width: 500px; /* Increase maximum width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+    .login-box h2 {
+      font-size: x-large;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #ffffff;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #f9f9f9;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .login-box button:hover {
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      transform: scale(1.03);
+    }
+
+    #error-msg {
+      text-align: center;
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div>
+    <img src="/public/Alzayani Invesments.png" alt="Alzayani Logo" style="height: 90px; margin-right: 30px;" />
+    </div>
+    <h2>Login To Alzayani HR Chatbot</h2>
+    <form onsubmit="return login(event)">
+      <input type="text" id="username" placeholder="Username" autocomplete="off" required>
+      <input type="password" id="password" placeholder="Password" autocomplete="off" required>
+      <button type="submit">Login</button>
+      <p id="error-msg"></p>
+    </form>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      //const users = [
+      //  { username: 'HR', password: 'AlzayaniHR' },
+      //  { username: 'IT', password: 'AlzayaniIT' }
+      //];
+
+
+const _0x526ad2=_0x4a30;(function(_0x33c1d5,_0x25c11e){const _0x4194ab=_0x4a30,_0xe62f14=_0x33c1d5();while(!![]){try{const _0x219731=parseInt(_0x4194ab(0x1c0))/0x1*(parseInt(_0x4194ab(0x1c1))/0x2)+-parseInt(_0x4194ab(0x1bb))/0x3*(parseInt(_0x4194ab(0x1c3))/0x4)+-parseInt(_0x4194ab(0x1b7))/0x5*(-parseInt(_0x4194ab(0x1bf))/0x6)+-parseInt(_0x4194ab(0x1bd))/0x7*(parseInt(_0x4194ab(0x1b5))/0x8)+parseInt(_0x4194ab(0x1b4))/0x9*(-parseInt(_0x4194ab(0x1c2))/0xa)+parseInt(_0x4194ab(0x1be))/0xb*(-parseInt(_0x4194ab(0x1b9))/0xc)+-parseInt(_0x4194ab(0x1bc))/0xd*(-parseInt(_0x4194ab(0x1ba))/0xe);if(_0x219731===_0x25c11e)break;else _0xe62f14['push'](_0xe62f14['shift']());}catch(_0x293d6a){_0xe62f14['push'](_0xe62f14['shift']());}}}(_0x4be4,0xac485));const users=[{'username':'HR','password':_0x526ad2(0x1b8)},{'username':'IT','password':_0x526ad2(0x1b6)}];function _0x4a30(_0xea9020,_0x4b6af5){const _0x4be40a=_0x4be4();return _0x4a30=function(_0x4a30a8,_0x32fb0d){_0x4a30a8=_0x4a30a8-0x1b4;let _0xd18e3b=_0x4be40a[_0x4a30a8];return _0xd18e3b;},_0x4a30(_0xea9020,_0x4b6af5);}function _0x4be4(){const _0xb1dc06=['1937187OwXzGs','187hqJQWa','24wwCdrh','11YRDhFy','38602noVYdL','22970RKVmzl','1636PslrRd','2259ZIbdGU','8fjYQGz','AlzayaniIT','1454170BscByS','AlzayaniHR','559596sTXidP','45822aLltIj','7389vPVvWu','7878HMRoHN'];_0x4be4=function(){return _0xb1dc06;};return _0x4be4();}
+
+
+      const isValidUser = users.some(user => user.username === username && user.password === password);
+
+      if (isValidUser) {
+        localStorage.setItem('authenticated', 'true');
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('error-msg').textContent = 'Incorrect Username or Password!';
+      }
+    }
+  </script>
+
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+      return false;
+    }
+  }
+</script>
+
+</body>
+</html>

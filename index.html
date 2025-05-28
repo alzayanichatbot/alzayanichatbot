@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alzayani Investments - HR Department - Chatbot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="icon" type="image/png" href="/public/Alzayani Invesments - Copy.png" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background-color: #06276f;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+      }
+      header h1 {
+        font-size: 24px;
+        color: #ffffff;
+      }
+      .button-group {
+        display: flex;
+        gap: 10px;
+      }
+      .logout-button, .admin-button {
+        padding: 10px 18px;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logout-button:hover, .admin-button:hover {
+        background: linear-gradient(90deg, #4f46e5, #7c3aed);
+        transform: scale(1.03);
+        box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+      }
+
+      .intro-section {
+        margin-top: 80px;
+        height: calc(100vh - 80px);
+        background-color: #06276f;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .intro-section h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .intro-section p {
+        font-size: 20px;
+        max-width: 800px;
+        margin: 10px auto;
+        color: #e0e7ff;
+      }
+
+      .chatbot-container {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="/public/Alzayani Invesments.png" alt="Alzayani Logo" style="height: 60px; margin-right: 30px;" />
+        <h1 style="font-size: 24px; color: #ffffff; margin: 0;">HR Department - Chatbot</h1>
+      </a>
+      <div class="button-group">
+        <a class="admin-button" href="https://www.chatbase.co" target="_blank">Admin Panel</a>
+        <button class="logout-button" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <section class="intro-section">
+      <h2>HR Department AI Chatbot</h2>
+      <p>Welcome to the Alzayani Investments HR Chatbot. This virtual assistant is here to help you with HR-related questions and services.</p>
+      <p>If you want to use it, click on the chat icon at the bottom right corner of the screen.</p>
+    </section>
+
+    <div class="chatbot-container"></div>
+
+    <script>
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.onkeydown = function(e) {
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+          return false;
+        }
+      }
+    </script>
+
+    <script>
+      (function(){
+        if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+          window.chatbase=(...arguments)=>{
+            if(!window.chatbase.q){
+              window.chatbase.q=[]
+            }
+            window.chatbase.q.push(arguments)
+          };
+          window.chatbase=new Proxy(window.chatbase,{
+            get(target,prop){
+              if(prop==="q"){
+                return target.q
+              }
+              return(...args)=>target(prop,...args)
+            }
+          })
+        }
+        const onLoad=function(){
+          const script=document.createElement("script");
+          script.src="https://www.chatbase.co/embed.min.js";
+          script.id="OGWwUyRgb47fpcPr938pP";
+          script.setAttribute("chatbase", "embed");
+          document.querySelector('.chatbot-container').appendChild(script);
+        };
+        if(document.readyState==="complete"){
+          onLoad()
+        }else{
+          window.addEventListener("load",onLoad)
+        }
+      })();
+
+      function logout() {
+        localStorage.removeItem('authenticated');
+        window.location.href = 'login.html';
+      }
+
+      if (!localStorage.getItem('authenticated')) {
+        window.location.href = 'login.html';
+      }
+    </script>
+  </body>
+</html>
